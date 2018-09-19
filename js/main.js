@@ -56,4 +56,21 @@ const speak = () => {
     speakText.onerrer = e =>{
         console.log('Error');
     }
+
+    //selected voice
+    const selectedVoice = voiceSelect.selectedOptions[0].getAttribute('data-name');
+
+    //loop through voices
+    voices.forEach(voice => {
+        if(voice.name === selectedVoice){
+            speakText.voice = voice;
+        }
+    });
+    // Set pitcj and rate
+    speakText.rate = rate.value;
+    speakText.pitch = pitch.value;
+
+    //speak
+    synth.speak(speakText);
+
 }
