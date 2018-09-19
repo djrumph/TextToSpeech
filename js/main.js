@@ -1,5 +1,6 @@
 //Init Speech Syth API
 const synth = window.speechSynthesis;
+const body = document.querySelector('body');
 
 // DOM Elements
 const textForm = document.querySelector('form');
@@ -9,7 +10,6 @@ const rate = document.querySelector('#rate');
 const rateValue = document.querySelector('#rate-value');
 const pitch = document.querySelector('#pitch');
 const pitchValue = document.querySelector('#pitch-value');
-const body = document.querySelector('body');
 
 //Init voices array
 
@@ -38,6 +38,7 @@ if(synth.onvoiceschanged !== undefined){
 //Speak
 
 const speak = () => {
+
     //check is speaking
     if(synth.speaking){
         console.error("already speaking");
@@ -45,12 +46,18 @@ const speak = () => {
     }
 
     if(textInput.value !== ''){
+    //add background animation
+    body.style.background = '#141414 url(../img/wave.gif)';
+    body.style.backgroundRepeat = 'repeat-x';
+    body.style.backgroundSize = "100% 100%";
+
         //get speak text
         const speakText = new SpeechSynthesisUtterance(textInput.value);
     
     //speak end
     speakText.onend = e  => {
         console.log("Done speaking");
+        body.style.background = '#141414';
     }
     //speak error
     speakText.onerrer = e =>{
