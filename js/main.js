@@ -74,3 +74,19 @@ const speak = () => {
     synth.speak(speakText);
   }
 };
+
+//EVENT LISTENERS
+
+//text form submit
+textForm.addEventListener('submit', e => {
+    e.preventDefault();
+    speak();
+    textInput.getBoundingClientRect();
+})
+
+//Rate value change
+rate.addEventListener('change', e => rateValue.textContent = rate.value);
+
+//Pitch value change
+pitch.addEventListener('change', e => rateValue.textContent = pitch.value);
+
