@@ -1,5 +1,5 @@
 //Init Speech Syth API
-const syth = window.speechSynthesis;
+const synth = window.speechSynthesis;
 
 // DOM Elements
 const textForm = document.querySelector('form');
@@ -21,3 +21,6 @@ const getVoices = () => {
 };
 
 getVoices();
+if(synth.onvoiceschanged !== undefined){
+    synth.onvoiceschanged = getVoices;
+}
